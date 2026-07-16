@@ -1,0 +1,258 @@
+[
+  {
+    "id": "TC001",
+    "category": "完美主义型拖延",
+    "description": "用户因害怕写得不够好而迟迟不开始写论文",
+    "input": {
+      "user_message": "我不想写论文，已经拖了三天了",
+      "context": {
+        "task": "写毕业论文初稿",
+        "deadline": "两周后",
+        "progress": "0%",
+        "history": ["昨天说今天写，今天又没写", "打开了文档又关了"]
+      }
+    },
+    "expected_dialogue": [
+      {
+        "role": "ai",
+        "action": "追问定位",
+        "content": "听起来卡住了。能说说具体是卡在哪一步吗？是不知道写什么内容，还是担心写得不够好？"
+      },
+      {
+        "role": "user",
+        "content": "担心写得不够好，导师肯定不满意"
+      },
+      {
+        "role": "ai",
+        "action": "识别卡点",
+        "identified_root": "完美主义——对初稿质量有不切实际的期望"
+      },
+      {
+        "role": "ai",
+        "action": "给出微行动",
+        "micro_action": "打开Word文档 → 只写标题和你的姓名学号 → 写完就关掉。5分钟，就做这一个动作。初稿的「初」字本来就是可以很烂的意思。"
+      }
+    ],
+    "expected_pattern": "创造性输出 + 完美主义倾向",
+    "expected_micro_action_duration": "≤5分钟",
+    "expected_breakthrough_condition": "用户完成微行动并反馈"
+  },
+  {
+    "id": "TC002",
+    "category": "任务模糊型拖延",
+    "description": "用户面对模糊的大任务不知从何下手",
+    "input": {
+      "user_message": "下周要交一个数据分析报告，但我连要分析什么都不知道",
+      "context": {
+        "task": "数据分析报告",
+        "deadline": "一周后",
+        "progress": "10%（只拿到了原始数据）",
+        "history": []
+      }
+    },
+    "expected_dialogue": [
+      {
+        "role": "ai",
+        "action": "追问定位",
+        "content": "先别慌。原始数据有了是个好开头。你觉得现在最让你头大的是：A)不知道从哪个角度分析 B)不知道用什么工具 C)不知道报告该怎么写？"
+      },
+      {
+        "role": "user",
+        "content": "A，不知道从哪个角度分析"
+      },
+      {
+        "role": "ai",
+        "action": "识别卡点",
+        "identified_root": "任务模糊——缺乏具体的切入角度导致无法启动"
+      },
+      {
+        "role": "ai",
+        "action": "给出微行动",
+        "micro_action": "打开原始数据文件 → 只看前20行 → 列出你看到的3个字段/维度 → 关掉。不需要分析，只观察。这就是你今天全部的任务。"
+      }
+    ],
+    "expected_pattern": "开放型任务 + 决策困难",
+    "expected_micro_action_duration": "≤5分钟"
+  },
+  {
+    "id": "TC003",
+    "category": "任务过大型拖延",
+    "description": "用户面对体量巨大的任务感到无从下手",
+    "input": {
+      "user_message": "期末要复习5门课，每门都好多内容，完全不知道从哪开始",
+      "context": {
+        "task": "期末复习",
+        "deadline": "两周",
+        "progress": "0%",
+        "history": ["每天想着要复习，结果一天天过去"]
+      }
+    },
+    "expected_dialogue": [
+      {
+        "role": "ai",
+        "action": "追问定位",
+        "content": "5门课确实多，一口气想全吞掉谁都会崩溃。你心里最有底和最没底的分别是哪门？"
+      },
+      {
+        "role": "user",
+        "content": "数学最有底，英语最没底"
+      },
+      {
+        "role": "ai",
+        "action": "识别卡点",
+        "identified_root": "任务体量过大——缺乏拆分导致焦虑性瘫痪"
+      },
+      {
+        "role": "ai",
+        "action": "给出微行动",
+        "micro_action": "只拿英语课本 → 翻到目录 → 用笔圈出你觉得最陌生的3个单元 → 关上课本。10分钟够了。先解决最怕的，后面就轻松了。"
+      }
+    ],
+    "expected_pattern": "多任务堆积 + 焦虑性瘫痪",
+    "expected_micro_action_duration": "≤10分钟"
+  },
+  {
+    "id": "TC004",
+    "category": "缺乏动力型拖延",
+    "description": "用户觉得任务没意义而拖延",
+    "input": {
+      "user_message": "要填一个巨无聊的表格，两百多个字段，看到就烦",
+      "context": {
+        "task": "填写实习申请表",
+        "deadline": "三天后",
+        "progress": "5%（打开了表格）",
+        "history": ["打开就关了，刷了两小时手机"]
+      }
+    },
+    "expected_dialogue": [
+      {
+        "role": "ai",
+        "action": "追问定位",
+        "content": "两百个字段确实反人类。不过——填完这张表的结果是什么？拿到实习机会之后你最期待的是什么？"
+      },
+      {
+        "role": "user",
+        "content": "想去那个公司看看真正业界怎么做的"
+      },
+      {
+        "role": "ai",
+        "action": "识别卡点",
+        "identified_root": "缺乏意义感——看不到任务与目标的连接"
+      },
+      {
+        "role": "ai",
+        "action": "给出微行动",
+        "micro_action": "找到表格里最容易填的10个字段（姓名、学号、电话…）→ 填完它们 → 计时（我猜3分钟）→ 关掉。你离想去的公司又近了一步。"
+      }
+    ],
+    "expected_pattern": "重复性机械任务 + 意义感缺失",
+    "expected_micro_action_duration": "≤5分钟"
+  },
+  {
+    "id": "TC005",
+    "category": "决策疲劳型拖延",
+    "description": "用户因为太多选项而无法决策",
+    "input": {
+      "user_message": "老师让我们自选课题做项目，一周了还没定下来，看了十几个方向每个都想试试",
+      "context": {
+        "task": "选定课程项目课题",
+        "deadline": "三天后",
+        "progress": "30%（收集了11个备选方向）",
+        "history": ["每天换个方向，深入不了"]
+      }
+    },
+    "expected_dialogue": [
+      {
+        "role": "ai",
+        "action": "追问定位",
+        "content": "收集了11个方向说明你做事很用心，但现在卡在'选择'上了。我问你三个问题帮你缩小：1)哪个方向你能找到最多的现成资料？2)哪个方向你愿意连续做两周不腻？3)哪个方向做完能让你简历上多一行亮点？"
+      },
+      {
+        "role": "user",
+        "content": "方向A资料最多，方向B我感兴趣但不熟，方向C简历加分最多"
+      },
+      {
+        "role": "ai",
+        "action": "识别卡点",
+        "identified_root": "决策疲劳——FOMO（害怕错过更好选项）导致无法锁定"
+      },
+      {
+        "role": "ai",
+        "action": "给出微行动",
+        "micro_action": "在三个方向里，用'最小后悔原则'：假设你不选哪个会最后悔？选它。然后今天就做一件事：给这个方向写一句'一句话描述'发给老师确认。其他的不是你放弃，是'暂时存档'。"
+      }
+    ],
+    "expected_pattern": "多选项 + FOMO决策瘫痪",
+    "expected_micro_action_duration": "≤10分钟"
+  },
+  {
+    "id": "TC006",
+    "category": "中断后重启困难",
+    "description": "用户之前中断了任务，现在无法重新启动",
+    "input": {
+      "user_message": "上个月开始学Python，学到循环就停了，现在想捡起来但忘记了前面学的，又从Hello World开始又觉得浪费时间",
+      "context": {
+        "task": "继续学Python",
+        "deadline": "无硬性截止",
+        "progress": "30%（学完了变量、条件、到循环）",
+        "history": ["中断了4周", "之前每天学1小时坚持了2周"]
+      }
+    },
+    "expected_dialogue": [
+      {
+        "role": "ai",
+        "action": "追问定位",
+        "content": "中断了四周还能想着捡起来，这说明你是真心想学。现在卡在'从头开始觉得亏，从中间开始怕不懂'对吧？"
+      },
+      {
+        "role": "user",
+        "content": "对，就是这种感觉"
+      },
+      {
+        "role": "ai",
+        "action": "识别卡点",
+        "identified_root": "中断重启——知识衰减与心理锚点丢失"
+      },
+      {
+        "role": "ai",
+        "action": "给出微行动",
+        "micro_action": "别从Hello World开始也别从循环继续。找一个你之前写过的代码文件 → 读一遍 → 看能不能理解每一行 → 给每行写一句中文注释。这既是复习也是热身。10分钟。"
+      }
+    ],
+    "expected_pattern": "长期中断 + 知识衰减焦虑",
+    "expected_micro_action_duration": "≤10分钟"
+  },
+  {
+    "id": "TC007",
+    "category": "模式识别测试——同一用户的二次使用",
+    "description": "同一用户再次使用时，AI应识别之前的拖延模式",
+    "input": {
+      "user_message": "论文写到第三章又卡住了，不想写了",
+      "context": {
+        "task": "继续写论文第三章",
+        "deadline": "一周后",
+        "progress": "40%",
+        "history": ["之前第一章也卡过，原因是完美主义"],
+        "user_id": "user_tc001"
+      }
+    },
+    "expected_dialogue": [
+      {
+        "role": "ai",
+        "action": "模式识别",
+        "content": "我记得你上次写第一章也卡住了，当时是因为担心写得不够好。这次第三章是不是也是同样的感觉——怕写得不如前两章？"
+      },
+      {
+        "role": "user",
+        "content": "是的……第一章和第二章写得还行，第三章怕掉水准"
+      },
+      {
+        "role": "ai",
+        "action": "给出微行动",
+        "micro_action": "你的完美主义又在捣乱了。老办法：写一个'烂版本'的第三章开头——故意写烂，语法不通都没关系，就当给未来自己留的草稿。你上次第一章也是这么破的。5分钟。"
+      }
+    ],
+    "expected_pattern": "重复模式识别成功——完美主义",
+    "expected_micro_action_duration": "≤5分钟"
+  }
+]
