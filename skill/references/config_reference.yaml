@@ -1,0 +1,26 @@
+# AI拖延症破解器 — 配置参考
+# 默认配置文件示例: ~/.procrastination_breaker/config.yaml
+
+user:
+  name: "默认用户"
+  timezone: "Asia/Shanghai"
+
+conversation:
+  max_questions_per_diagnosis: 3
+  min_micro_action_minutes: 1
+  max_micro_action_minutes: 10
+  cooldown_minutes: 30
+
+reminders:
+  enabled: false
+  daily_review_time: "21:00"
+  inactivity_reminder_days: 3
+
+data:
+  log_retention_days: 365
+  auto_backup: false
+
+dashboard:
+  show_streak: true
+  show_hourly_heatmap: true
+  max_display_days: 30
